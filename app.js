@@ -11,6 +11,7 @@ var mytrips = require('./routes/mytrips');
 var newtrip = require('./routes/newtrip');
 var pickroute = require('./routes/pickroute');
 var setalert = require('./routes/setalert');
+var edittrip = require('./routes/edittrip');
 
 //all environments
 app.set('port', process.env.PORT || 3000);
@@ -38,6 +39,7 @@ app.get('/mytrips', mytrips.view);
 app.get('/newtrip', newtrip.view);
 app.get('/pickroute', pickroute.view);
 app.get('/setalert', setalert.view);
+app.get('/edittrip', edittrip.view);
 // Example route
 // app.get('/users', user.list);
 
