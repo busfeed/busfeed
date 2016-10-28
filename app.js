@@ -7,6 +7,10 @@ var app = express();
 
 //routes
 var index = require('./routes/index');
+var mytrips = require('./routes/mytrips');
+var newtrip = require('./routes/newtrip');
+var pickroute = require('./routes/pickroute');
+var setalert = require('./routes/setalert');
 
 //all environments
 app.set('port', process.env.PORT || 3000);
@@ -30,6 +34,10 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/mytrips', mytrips.view);
+app.get('/newtrip', newtrip.view);
+app.get('/pickroute', pickroute.view);
+app.get('/setalert', setalert.view);
 // Example route
 // app.get('/users', user.list);
 
