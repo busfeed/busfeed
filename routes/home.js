@@ -4,5 +4,5 @@
  */
 
 exports.view = function(req, res){
-  res.render('index', {layout: "layout-landing"});
+  res.render('home');
 };

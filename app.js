@@ -7,6 +7,7 @@ var app = express();
 
 //routes
 var index = require('./routes/index');
+var home = require('./routes/home');
 var mytrips = require('./routes/mytrips');
 var newtrip = require('./routes/newtrip');
 var pickroute = require('./routes/pickroute');
@@ -35,6 +36,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/home', home.view);
 app.get('/mytrips', mytrips.view);
 app.get('/newtrip', newtrip.view);
 app.get('/pickroute', pickroute.view);
