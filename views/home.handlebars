@@ -1,5 +1,29 @@
-<div class="container-fluid text-center">
- <h1>BusFeed</h1>
- <div class="row"><a class="btn btn-primary" href="mytrips">My Trips</a></div>
- <div class="row"><a class="btn btn-default" href="newtrip">New Trip</a></div>
+<div class="container">
+   <div class="row">
+      <div class="text-center">
+         <h1>BusFeed</h1>
+      </div>
+      <div class="col-sm-8 col-md-10 col-md-offset-1">
+         <div class="list-group" id="feed"></div>
+      </div>
+   </div>
 </div>
+
+<script>
+$(document).ready(
+   $.getJSON("../data/feed", function(json) {
+      console.log(json);
+      if (json.feed.length > 0) {
+         for (var stop in json.feed) {
+            name = json.feed[stop];
+            $('#feed').append("<a href='/detail/" + name.replace( /\s/g, "") + "' class='list-group-item'>" + name + "<span class='badge'>0</span></a>");
+         }
+         $('#feed').append("<a href='findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
+      }
+      else {
+         $('#feed').append("<a href='/findstop' class='list-group-item'><h4 class='list-group-item-heading'>No stops tracked!</h4><p class='list-group-item-text'>Press to add stops.</p></a>");
+      }
+   })
+);
+
+</script>

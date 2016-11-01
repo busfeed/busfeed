@@ -5,6 +5,12 @@ var path = require('path');
 var handlebars = require('express3-handlebars');
 var app = express();
 
+//query route
+var query = require('./routes/query');
+
+//json route
+var data = require('./routes/data');
+
 //routes
 var index = require('./routes/index');
 var home = require('./routes/home');
@@ -13,6 +19,8 @@ var newtrip = require('./routes/newtrip');
 var pickroute = require('./routes/pickroute');
 var setalert = require('./routes/setalert');
 var edittrip = require('./routes/edittrip');
+var findstop = require('./routes/findstop');
+var detail = require('./routes/detail');
 
 //all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,8 +50,12 @@ app.get('/newtrip', newtrip.view);
 app.get('/pickroute', pickroute.view);
 app.get('/setalert', setalert.view);
 app.get('/edittrip', edittrip.view);
-// Example route
-// app.get('/users', user.list);
+app.get('/findstop', findstop.view);
+app.get('/detail/:stopName', detail.view);
+
+//json routes
+app.get('/data/feed', data.feed);
+app.get('/data/stops', data.stops);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

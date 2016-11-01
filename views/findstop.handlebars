@@ -1,0 +1,34 @@
+<div class="container">
+   <div class="row">
+      <div class="col-sm-8 col-md-10 col-md-offset-1">
+         <div class="input-group">
+            <span class="input-group-addon" style="border-radius: 45px 0px 0px 45px;">
+               <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <input type="text" class="form-control" placeholder="Search..." style="border-radius: 0px 45px 45px 0px;">
+         </div>
+
+         <div class="list-group" style="margin-top: 20px;">
+            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#mc-collapse" aria-expanded="false">Main Campus</button>
+            <div class="list-group collapse" id="mc-collapse"></div>
+            <button type="button" class="list-group-item btn-block text-left">Category</button>
+            <button type="button" class="list-group-item btn-block text-left">Category</button>
+            <button type="button" class="list-group-item btn-block text-left">Category</button>
+            <button type="button" class="list-group-item btn-block text-left">Category</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+$(document).ready(
+   $.getJSON("../data/stops", function(json) {
+      console.log(json);
+      for (var stop in json['main-campus']) {
+         var name = json['main-campus'][stop];
+         $('#mc-collapse').append("<a href='/detail/" + name.replace( /\s/g, "") + "' class='list-group-item'>" + name + "</a>");
+      }
+   })
+);
+
+</script>
