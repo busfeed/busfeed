@@ -1,6 +1,7 @@
 var allstops = require('../data/allstops');
 var stops = require('../data/stops');
 var feed = require('../data/feed');
+var pings = require('../data/pings');
 
 exports.feed = function(req, res) {
    var f = {"feed":[]};

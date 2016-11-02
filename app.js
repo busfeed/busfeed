@@ -53,6 +53,8 @@ app.get('/edittrip', edittrip.view);
 app.get('/findstop', findstop.view);
 app.get('/detail/:stopId', detail.view);
 
+app.post('/home', home.viewWithName);
+
 //json routes
 app.get('/data/feed', data.feed);
 app.get('/data/stops', data.stops);

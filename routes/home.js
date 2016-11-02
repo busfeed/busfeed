@@ -1,8 +1,10 @@
+var name = "";
 
-/*
- * GET home page.
- */
+exports.view = function(req, res) {
+   res.render('home', {"username":name});
+};
 
-exports.view = function(req, res){
-  res.render('home');
+exports.viewWithName = function(req, res) {
+   name = req.body.username;
+   res.render('home', {"username":name});
 };
