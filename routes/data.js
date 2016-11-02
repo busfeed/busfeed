@@ -1,10 +1,24 @@
-var feed = require('../data/feed');
+var allstops = require('../data/allstops');
 var stops = require('../data/stops');
+var feed = require('../data/feed');
 
 exports.feed = function(req, res) {
-   res.json(feed);
+   var f = {"feed":[]};
+   for (var i in feed.feed) {
+      f.feed.push({"id":feed.feed[i], "name":allstops.stops[parseInt(feed.feed[i])]});
+   }
+   res.json(f);
 }
 
 exports.stops = function(req, res) {
-   res.json(stops);
+   var s = {};
+   for (var key in stops) {
+      if (stops.hasOwnProperty(key)) {
+         s[key] = [];
+         for (var i in stops[key]) {
+            s[key].push({"id":stops[key][i], "name":allstops.stops[parseInt(stops[key][i])]});
+         }
+      }
+   }
+   res.json(s);
 }

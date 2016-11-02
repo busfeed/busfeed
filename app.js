@@ -51,7 +51,7 @@ app.get('/pickroute', pickroute.view);
 app.get('/setalert', setalert.view);
 app.get('/edittrip', edittrip.view);
 app.get('/findstop', findstop.view);
-app.get('/detail/:stopName', detail.view);
+app.get('/detail/:stopId', detail.view);
 
 //json routes
 app.get('/data/feed', data.feed);

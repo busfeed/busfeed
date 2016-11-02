@@ -9,12 +9,14 @@
          </div>
 
          <div class="list-group" style="margin-top: 20px;">
-            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#mc-collapse" aria-expanded="false">Main Campus</button>
-            <div class="list-group collapse" id="mc-collapse"></div>
-            <button type="button" class="list-group-item btn-block text-left">Category</button>
-            <button type="button" class="list-group-item btn-block text-left">Category</button>
-            <button type="button" class="list-group-item btn-block text-left">Category</button>
-            <button type="button" class="list-group-item btn-block text-left">Category</button>
+            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#clockwise" aria-expanded="false">
+               <b>Clockwise Campus Loop</b>
+            </button>
+            <div class="list-group collapse" id="clockwise"></div>
+            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#counter" aria-expanded="false">
+               <b>Counter-Clockwise Campus Loop</b>
+            </button>
+            <div class="list-group collapse" id="counter"></div>
          </div>
       </div>
    </div>
@@ -24,9 +26,14 @@
 $(document).ready(
    $.getJSON("../data/stops", function(json) {
       console.log(json);
-      for (var stop in json['main-campus']) {
-         var name = json['main-campus'][stop];
-         $('#mc-collapse').append("<a href='/detail/" + name.replace( /\s/g, "") + "' class='list-group-item'>" + name + "</a>");
+      for (var key in json) {
+         if (json.hasOwnProperty(key)) {
+            for (var i in json[key]) {
+               var id = json[key][i].id;
+               var name = json[key][i].name;
+               $('#'+key).append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "</a>");
+            }
+         }
       }
    })
 );

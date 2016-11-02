@@ -15,8 +15,9 @@ $(document).ready(
       console.log(json);
       if (json.feed.length > 0) {
          for (var stop in json.feed) {
-            name = json.feed[stop];
-            $('#feed').append("<a href='/detail/" + name.replace( /\s/g, "") + "' class='list-group-item'>" + name + "<span class='badge'>0</span></a>");
+            id = json.feed[stop].id;
+            name = json.feed[stop].name;
+            $('#feed').append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "<span class='badge'>0</span></a>");
          }
          $('#feed').append("<a href='findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
       }

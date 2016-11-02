@@ -1,8 +1,18 @@
 <div class="container">
    <div class="row">
       <div class="col-sm-8 col-md-10 col-md-offset-1">
-         <a href="{{goBack}}" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i></a>
-         <span class="label label-default">{{stopName}}</span>
+         <span class="label label-default" style="padding: 8px; display: block; text-align: left; font-size: 1.1em;">
+            <a href="{{goBack}}" class="btn btn-default" style="margin-right: 5px;">
+               <i class="glyphicon glyphicon-chevron-left"></i>
+            </a>
+            {{stopName}}
+         </span>
+         <form action="" method="POST" id="pingForm" style="margin-top: 10px;">
+            <input type="button" class="btn btn-danger btn-block" value="Report: Crowded stop">
+         </form>
+         <form action="" method="POST" id="pingForm" style="margin-top: 5px; margin-bottom: 10px;">
+            <input type="button" class="btn btn-default btn-block" value="Add to feed">
+         </form>
       </div>
    </div>
 </div>
