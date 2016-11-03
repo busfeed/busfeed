@@ -37,7 +37,7 @@ exports.feed = function(req, res) {
       f.feed.push({"id":feed.feed[i], "name":allstops.stops[parseInt(feed.feed[i])]});
    }
    res.json(f);
-}
+};
 
 exports.stops = function(req, res) {
    var s = {};
@@ -50,9 +50,23 @@ exports.stops = function(req, res) {
       }
    }
    res.json(s);
-}
+};
+
+exports.chart = function(req, res) {
+   var day = new Date().getDay();
+   var stopId = parseInt(req.params.stopId);
+   var obj = {"domain":[], "range":[]};
+   var daypings = allpings[stopId][day];
+   for (var key in daypings) {
+      if (daypings.hasOwnProperty(key)) {
+         obj.domain.push(key);
+         obj.range.push(daypings[key]);
+      }
+   }
+   res.json(obj);
+};
 
 exports.newPing = function(req, res) {
    console.log(req.params.stopId);
    res.send("pinged");
-}
+};

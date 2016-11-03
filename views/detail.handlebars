@@ -13,20 +13,50 @@
          <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;">
             Add to feed
          </button>
+         <div id="chart"></div>
+         <div class="text-center">
+            <div class="btn-group" data-toggle="buttons">
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day0" autocomplete="off"> Su
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day1" autocomplete="off"> M
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day2" autocomplete="off"> Tu
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day3" autocomplete="off"> W
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day4" autocomplete="off"> Th
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day5" autocomplete="off"> F
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="options" id="day6" autocomplete="off"> S
+               </label>
+            </div>
+         </div>
       </div>
    </div>
 </div>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
 
 var stopId = "{{stopId}}";
 var stopName = "{{stopName}}";
 
-function pingStop() {
+$("#day"+(new Date().getDay())).prop('checked', true).parent().addClass("active");
 
+function pingStop() {
    $.post('/ping/'+stopId, function(result) {
       alert("Report sent!");
    });
 }
-
 </script>
+
+<script src="../js/d3details.js"></script>
