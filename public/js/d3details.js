@@ -28,7 +28,8 @@ $.getJSON("../data/"+stopId, function(json) {
       })
       .y(function (d) {
          return yScale(d.y);
-      });
+      })
+      .curve(d3.curveMonotoneX);
 
    var data = [];
    for (var i=0; i < 9; i++) {
