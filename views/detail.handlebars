@@ -7,12 +7,26 @@
             </a>
             {{stopName}}
          </span>
-         <form action="" method="POST" id="pingForm" style="margin-top: 10px;">
-            <input type="button" class="btn btn-danger btn-block" value="Report: Crowded stop">
-         </form>
-         <form action="" method="POST" id="pingForm" style="margin-top: 5px; margin-bottom: 10px;">
-            <input type="button" class="btn btn-default btn-block" value="Add to feed">
-         </form>
+         <button role="button" class="btn btn-danger btn-block" style="margin-top: 10px;" onclick="pingStop()">
+            Report: Crowded stop
+         </button>
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;">
+            Add to feed
+         </button>
       </div>
    </div>
 </div>
+
+<script>
+
+var stopId = "{{stopId}}";
+var stopName = "{{stopName}}";
+
+function pingStop() {
+
+   $.post('/ping/'+stopId, function(result) {
+      alert("Report sent!");
+   });
+}
+
+</script>

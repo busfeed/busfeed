@@ -53,11 +53,12 @@ app.get('/edittrip', edittrip.view);
 app.get('/findstop', findstop.view);
 app.get('/detail/:stopId', detail.view);
 
-app.post('/home', home.viewWithName);
-
 //json routes
 app.get('/data/feed', data.feed);
 app.get('/data/stops', data.stops);
+
+app.post('/home', home.viewWithName);
+app.post('/ping/:stopId', data.newPing);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

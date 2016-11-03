@@ -3,6 +3,34 @@ var stops = require('../data/stops');
 var feed = require('../data/feed');
 var pings = require('../data/pings');
 
+var intervalObj = {};
+for (var i=7; i < 24; i++) {
+   for (var k=0; k < 2; k++) {
+      var key = "" + (i * 100 + k * 30);
+      intervalObj[key] = 0;
+   }
+}
+
+var pingsArr = [];
+for (var i=0; i < 7; i++) {
+   pingsArr.push(JSON.parse(JSON.stringify(intervalObj)));
+}
+
+var allpings = {};
+for (var i=0; i < 29; i++) {
+   allpings[""+i] = JSON.parse(JSON.stringify(pingsArr));
+}
+
+for (var p in pings.pings) {
+   var stopId = pings.pings[p].id;
+   var date = new Date(pings.pings[p].stamp * 1000);
+   var day = date.getDay();
+   var hour = date.getHours();
+   var minutes = date.getMinutes();
+   var key = "" + (hour * 100 + Math.floor(minutes / 30) * 30);
+   allpings[stopId][day][key]++;
+}
+
 exports.feed = function(req, res) {
    var f = {"feed":[]};
    for (var i in feed.feed) {
@@ -22,4 +50,9 @@ exports.stops = function(req, res) {
       }
    }
    res.json(s);
+}
+
+exports.newPing = function(req, res) {
+   console.log(req.params.stopId);
+   res.send("pinged");
 }
