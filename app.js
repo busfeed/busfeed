@@ -56,7 +56,7 @@ app.get('/detail/:stopId', detail.view);
 //json routes
 app.get('/data/feed', data.feed);
 app.get('/data/stops', data.stops);
-app.get('/data/:stopId', data.chart);
+app.get('/data/:stopId/:day', data.chart);
 
 app.post('/home', home.viewWithName);
 app.post('/ping/:stopId', data.newPing);

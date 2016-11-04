@@ -55,7 +55,7 @@ exports.stops = function(req, res) {
 };
 
 exports.chart = function(req, res) {
-   var day = new Date().getDay();
+   var day = parseInt(req.params.day);
    var stopId = parseInt(req.params.stopId);
    var obj = {"domain":[], "range":[]};
    var daypings = allpings[stopId][day];

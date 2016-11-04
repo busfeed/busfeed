@@ -22,25 +22,25 @@
          <div id="chart"></div>
          <div class="text-center">
             <div class="btn-group" data-toggle="buttons">
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(0);">
                   <input type="radio" name="options" id="day0" autocomplete="off"> Su
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(1);">
                   <input type="radio" name="options" id="day1" autocomplete="off"> M
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(2);">
                   <input type="radio" name="options" id="day2" autocomplete="off"> Tu
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(3);">
                   <input type="radio" name="options" id="day3" autocomplete="off"> W
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(4);">
                   <input type="radio" name="options" id="day4" autocomplete="off"> Th
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(5);">
                   <input type="radio" name="options" id="day5" autocomplete="off"> F
                </label>
-               <label class="btn btn-default">
+               <label class="btn btn-default" onclick="drawChart(6);">
                   <input type="radio" name="options" id="day6" autocomplete="off"> S
                </label>
             </div>
@@ -52,6 +52,10 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
+
+$(document).ready(function() {
+   drawChart(new Date().getDay());
+});
 
 console.log({{tracked}});
 
