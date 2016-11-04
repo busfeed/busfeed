@@ -60,6 +60,8 @@ app.get('/data/:stopId', data.chart);
 
 app.post('/home', home.viewWithName);
 app.post('/ping/:stopId', data.newPing);
+app.post('/data/track/:stopId', data.trackStop);
+app.post('/data/untrack/:stopId', data.untrackStop);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -3,6 +3,8 @@ var stops = require('../data/stops');
 var feed = require('../data/feed');
 var pings = require('../data/pings');
 
+exports.feedList = feed;
+
 var intervalObj = {};
 for (var i=7; i < 24; i++) {
    for (var k=0; k < 2; k++) {
@@ -70,3 +72,13 @@ exports.newPing = function(req, res) {
    console.log(req.params.stopId);
    res.send("pinged");
 };
+
+exports.trackStop = function(req, res) {
+   feed.feed.push(req.params.stopId);
+   res.send("tracked");
+}
+
+exports.untrackStop = function(req, res) {
+   feed.feed.splice(feed.feed.indexOf(req.params.stopId), 1);
+   res.send("untracked");
+}

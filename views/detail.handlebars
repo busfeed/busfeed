@@ -7,12 +7,18 @@
             </a>
             {{stopName}}
          </span>
-         <button role="button" class="btn btn-danger btn-block" style="margin-top: 10px;" onclick="pingStop()">
+         <button role="button" class="btn btn-danger btn-block" style="margin-top: 10px;" onclick="pingStop(); this.disabled=true;">
             Report: Crowded stop
          </button>
-         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;">
+         {{#if tracked}}
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;" onclick="untrackStop(); this.disabled=true;">
+            Remove from feed
+         </button>
+         {{else}}
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;" onclick="trackStop(); this.disabled=true;">
             Add to feed
          </button>
+         {{/if}}
          <div id="chart"></div>
          <div class="text-center">
             <div class="btn-group" data-toggle="buttons">
@@ -47,6 +53,8 @@
 
 <script>
 
+console.log({{tracked}});
+
 var stopId = "{{stopId}}";
 var stopName = "{{stopName}}";
 
@@ -55,6 +63,18 @@ $("#day"+(new Date().getDay())).prop('checked', true).parent().addClass("active"
 function pingStop() {
    $.post('/ping/'+stopId, function(result) {
       alert("Report sent!");
+   });
+}
+
+function trackStop() {
+   $.post('/data/track/'+stopId, function(result) {
+      alert("Added to feed!");
+   });
+}
+
+function untrackStop() {
+   $.post('/data/untrack/'+stopId, function(result) {
+      alert("Removed from feed!");
    });
 }
 </script>
