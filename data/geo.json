@@ -1,0 +1,12 @@
+{
+   "locations": [
+      {
+         "id": "Revelle Parking (North East)",
+         "geo": { "long": 32.87264, "lat": -117.24142 }
+      },
+      {
+         "id": "Revelle Parking (South East)",
+         "geo": { "long": 32.87252, "lat": -117.24139 }
+      }
+   ]
+}
