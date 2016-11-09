@@ -7,6 +7,122 @@
       {
          "id": "Revelle Parking (South East)",
          "geo": { "long": 32.87252, "lat": -117.24139 }
-      }
+      },
+      {
+         "id": "Pacific Hall (East)",
+         "geo": { "long": 32.87591, "lat": -117.24303 }
+      },
+      {
+         "id": "Pacific Hall (West)",
+         "geo": { "long": 32.8753, "lat": -117.2433 }
+      },
+      {
+         "id": "Muir Apartments (East)",
+         "geo": { "long": 32.8778, "lat": 32.8778 }
+      },
+      {
+         "id": "Muir Apartments (West)",
+         "geo": { "long": 32.87785, "lat": -117.24369 }
+      },
+      {
+         "id": "Peterson Hall (East)",
+         "geo": { "long": 32.88023, "lat": -117.24061 }
+      },
+      {
+         "id": "Peterson Hall (West)",
+         "geo": { "long": 32.88043, "lat": -117.240783 }
+      },
+      {
+         "id": "Pangea Parking Structure (East)",
+         "geo": { "long": 32.88428, "lat": -117.24231 }
+      },
+      {
+         "id": "Pangea Parking Structure (West)",
+         "geo": { "long": 32.8842, "lat": -117.24246 }
+      },
+      {
+         "id": "Eleanor Roosevelt College (East)",
+         "geo": { "long": 32.886506, "lat": -117.242336 }
+      },
+      {
+         "id": "Eleanor Roosevelt College (West)",
+         "geo": { "long": 32.88651, "lat": -117.24248 }
+      },
+      {
+         "id": "Torrey Pines Center South",
+         "geo": { "long": 32.891764, "lat": -117.24318 }
+      },
+      {
+         "id": "North Point (North)",
+         "geo": { "long": 32.88886, "lat": -117.24036 }
+      },
+      {
+         "id": "North Point (South)",
+         "geo": { "long": 32.88874, "lat": -117.24034 }
+      },
+      {
+         "id": "Hopkins Structure (North)",
+         "geo": { "long": 32.88437, "lat": -117.23851 }
+      },
+      {
+         "id": "Hopkins Structure (South)",
+         "geo": { "long": 32.884402, "lat": -117.238672 }
+      },
+      {
+         "id": "Warren Apartments (East)",
+         "geo": { "long": 32.88208, "lat": -117.2332 }
+      },
+      {
+         "id": "Warren Apartments (West)",
+         "geo": { "long": 32.881679, "lat": -117.233062 }
+      },
+      {
+         "id": "Lotp510/ Canyonview (North)",
+         "geo": { "long": 32.88073, "lat": -117.23068 }
+      },
+      {
+         "id": "Lotp510/ Canyonview (South)",
+         "geo": { "long": 32.88083, "lat": -117.23004 }
+      },
+      {
+         "id": "Pepper Canyon (North)",
+         "geo": { "long": 32.876494, "lat": -117.230422 }
+      },
+      {
+         "id": "Pepper Canyon (South)",
+         "geo": { "long": 32.876889, "lat": -117.229684 }
+      },
+      {
+         "id": "Gilman Transit Center (North)",
+         "geo": { "long": 32.87715, "lat": -117.23571 }
+      },
+      {
+         "id": "Gilman Transit Center (South)",
+         "geo": { "long": 32.87694, "lat": -117.23556 }
+      },
+      {
+         "id": "Gilman/Mandeville Lane (North)",
+         "geo": { "long": 32.87709, "lat": -117.23809 }
+      },
+      {
+         "id": "Gilman/Mandeville Lane (South)",
+         "geo": { "long": 32.876887, "lat": -117.238096 }
+      },
+      {
+         "id": "Gilman/Osler (East)",
+         "geo": { "long": 32.884402, "lat": -117.238672 }
+      },
+      {
+         "id": "Gilman/Osler (West)",
+         "geo": { "long": 32.87425, "lat": -117.2384 }
+      },
+      {
+         "id": "Ché Cafe (North)",
+         "geo": { "long": 32.87311, "lat": -117.23944 }
+      },
+      {
+         "id": "Ché Cafe (South)",
+         "geo": { "long": 32.87304, "lat": -117.23925 }
+      },
    ]
 }
