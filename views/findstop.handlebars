@@ -5,16 +5,18 @@
             <span class="input-group-addon" style="border-radius: 45px 0px 0px 45px;">
                <i class="glyphicon glyphicon-search"></i>
             </span>
-            <input type="text" class="form-control" placeholder="Search..." style="border-radius: 0px 45px 45px 0px;">
+            <input id="search-input" type="text" class="form-control" placeholder="Search..." style="border-radius: 0px 45px 45px 0px;" onkeyup="searchFilter()">
          </div>
          <h3>Browse by Route</h3>
          <div class="list-group" style="margin-top: 20px;">
             <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#clockwise" aria-expanded="false">
                <b>Clockwise Campus Loop</b>
+               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="float: right;"></span>
             </button>
             <div class="list-group collapse" id="clockwise"></div>
             <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#counter" aria-expanded="false">
                <b>Counter-Clockwise Campus Loop</b>
+               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="float: right;"></span>
             </button>
             <div class="list-group collapse" id="counter"></div>
          </div>
@@ -23,7 +25,10 @@
 </div>
 
 <script>
-$(document).ready(
+var stopItems;
+var stopToggles = $('.list-group.collapse');
+
+$(document).ready(function() {
    $.getJSON("../data/stops", function(json) {
       console.log(json);
       for (var key in json) {
@@ -31,11 +36,27 @@ $(document).ready(
             for (var i in json[key]) {
                var id = json[key][i].id;
                var name = json[key][i].name;
-               $('#'+key).append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "</a>");
+               $('#'+key).append("<a href='/detail/" + id + "' class='list-group-item stop-item'>" + name + "</a>");
             }
          }
       }
-   })
-);
+      stopItems = $('.stop-item');
+   });
+});
+
+function searchFilter() {
+   var val = $.trim($('#search-input').val()).toUpperCase();
+
+   if (val === "") {
+      stopItems.show();
+   }
+   else {
+      stopToggles.collapse("show");
+      stopItems.hide();
+      stopItems.filter(function() {
+         return -1 != $(this).text().toUpperCase().indexOf(val);
+      }).show();
+   }
+}
 
 </script>
