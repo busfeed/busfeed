@@ -20,7 +20,7 @@
          </button>
          {{/if}}
          <div id="chart"></div>
-         <div class="text-center">
+         <div class="text-center" style="margin-bottom: 10px;">
             <div class="btn-group" data-toggle="buttons">
                <label class="btn btn-default" onclick="drawChart(0);">
                   <input type="radio" name="options" id="day0" autocomplete="off"> Su
@@ -45,6 +45,7 @@
                </label>
             </div>
          </div>
+         <div id="map" style="height: 225px; margin-bottom: 10px;"></div>
       </div>
    </div>
 </div>
@@ -61,6 +62,8 @@ console.log({{tracked}});
 
 var stopId = "{{stopId}}";
 var stopName = "{{stopName}}";
+var dLat = {{loc.lat}};
+var dLong = {{loc.long}};
 
 $("#day"+(new Date().getDay())).prop('checked', true).parent().addClass("active");
 
@@ -84,3 +87,7 @@ function untrackStop() {
 </script>
 
 <script src="../js/d3details.js"></script>
+<script src="../js/detailsmap.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAie1MhJFabZkw-hHSlnUjm9nAz9_a5XGs&callback=initMap">
+    </script>
