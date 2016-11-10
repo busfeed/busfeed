@@ -2,6 +2,7 @@ var allstops = require('../data/allstops');
 var stops = require('../data/stops');
 var feed = require('../data/feed');
 var pings = require('../data/pings');
+var geos = require('../data/geo');
 
 exports.feedList = feed;
 
@@ -81,4 +82,8 @@ exports.trackStop = function(req, res) {
 exports.untrackStop = function(req, res) {
    feed.feed.splice(feed.feed.indexOf(req.params.stopId), 1);
    res.send("untracked");
+}
+
+exports.getGeos = function(req, res) {
+   res.send(geos);
 }

@@ -4,6 +4,7 @@
          <h1>Hello, {{username}}.</h1>
       </div>
       <div class="col-sm-8 col-md-10 col-md-offset-1">
+         <button class="btn btn-primary btn-block" style="margin-bottom: 5px;" onclick="this.innerHTML='Searching...'; this.disabled=true; closestStop();">Find closest stop</button>
          <span class="label label-default" style="margin-bottom: 5px; padding: 10px; display: block; text-align: left; font-size: 1.25em;">
             Feed
          </span>
@@ -30,4 +31,71 @@ $(document).ready(
    })
 );
 
+function closestStop() {
+   $.getJSON("../data/geos", function(json) {
+      console.log(json);
+
+      if (navigator.geolocation) {
+         var service = new google.maps.DistanceMatrixService();
+         navigator.geolocation.getCurrentPosition(function(position) {
+            var start = {
+               lat: position.coords.latitude,
+               lng: position.coords.longitude
+            };
+
+            var distance = Number.MAX_SAFE_INTEGER;
+            var closest;
+
+            var i = 0;
+            var stop = json.locations[i];
+            var dest = {
+               lat: stop.geo.lat,
+               lng: stop.geo.long
+            };
+
+            function checkNearest(response, status) {
+               if (status == 'OK') {
+                  var d = response.rows[0].elements[0].distance.value;
+                  if (d < distance) {
+                     console.log(stop.id, i, response.rows[0].elements[0].distance.value);
+                     distance = d;
+                     closest = json.locations[i];
+                  }
+
+                  if (i < json.locations.length - 1) {
+                     i++;
+                     stop = json.locations[i];
+                     dest = {
+                        lat: stop.geo.lat,
+                        lng: stop.geo.long
+                     };
+                     service.getDistanceMatrix({
+                        origins: [start],
+                        destinations: [dest],
+                        travelMode: 'WALKING'
+                     }, checkNearest);
+                  }
+                  else {
+                     //$.get('/detail/'+closest.id);
+                  }
+               }
+            }
+
+            service.getDistanceMatrix({
+               origins: [start],
+               destinations: [dest],
+               travelMode: 'WALKING'
+            }, checkNearest);
+         }, function() {
+            alert("Geolocation service failed.");
+         });
+      } else {
+         alert("Geolocation not enabled.");
+      }
+   });
+}
 </script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}">
+    </script>

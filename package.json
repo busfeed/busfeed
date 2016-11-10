@@ -1,25 +1,25 @@
 {
-  "name": "BusFeed",
-  "version": "0.0.1",
-  "author": "Michael Du",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/m2du/busfeed"
-  },
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "dotenv": "*",
-    "express": "3.x",
-    "express-handlebars": "*",
-    "mongodb": "*",
-    "mongoose": "*",
-    "mysql": "*"
-  },
-  "engines": {
-    "node": "0.10.x"
-  }
+   "name": "BusFeed",
+   "version": "0.0.1",
+   "author": "Michael Du",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/m2du/busfeed"
+   },
+   "license": "MIT",
+   "private": true,
+   "scripts": {
+      "start": "node app.js"
+   },
+   "dependencies": {
+      "dotenv": "*",
+      "express": "3.x",
+      "express-handlebars": "*",
+      "mongodb": "*",
+      "mongoose": "*",
+      "mysql": "*"
+   },
+   "engines": {
+      "node": "0.10.x"
+   }
 }

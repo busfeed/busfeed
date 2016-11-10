@@ -18,7 +18,7 @@
       },
       {
          "id": "Muir Apartments (East)",
-         "geo": { "lat": 32.8778, "long": 32.8778 }
+         "geo": { "lat": 32.8778, "long": -117.24358 }
       },
       {
          "id": "Muir Apartments (West)",
@@ -85,14 +85,6 @@
          "geo": { "lat": 32.88083, "long": -117.23004 }
       },
       {
-         "id": "Pepper Canyon (North)",
-         "geo": { "lat": 32.876494, "long": -117.230422 }
-      },
-      {
-         "id": "Pepper Canyon (South)",
-         "geo": { "lat": 32.876889, "long": -117.229684 }
-      },
-      {
          "id": "Gilman Transit Center (North)",
          "geo": { "lat": 32.87715, "long": -117.23571 }
       },
@@ -123,6 +115,6 @@
       {
          "id": "Ché Cafe (South)",
          "geo": { "lat": 32.87304, "long": -117.23925 }
-      },
+      }
    ]
 }
