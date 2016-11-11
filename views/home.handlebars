@@ -76,7 +76,8 @@ function closestStop() {
                      }, checkNearest);
                   }
                   else {
-                     //$.get('/detail/'+closest.id);
+                     console.log("stop found");
+                     window.location.replace('/detail/'+closest.id);
                   }
                }
             }

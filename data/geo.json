@@ -1,120 +1,120 @@
 {
    "locations": [
       {
-         "id": "Revelle Parking (North East)",
-         "geo": { "lat": 32.87264, "long": -117.24142 }
-      },
-      {
-         "id": "Revelle Parking (South East)",
-         "geo": { "lat": 32.87252, "long": -117.24139 }
-      },
-      {
-         "id": "Pacific Hall (East)",
-         "geo": { "lat": 32.87591, "long": -117.24303 }
-      },
-      {
-         "id": "Pacific Hall (West)",
-         "geo": { "lat": 32.8753, "long": -117.2433 }
-      },
-      {
-         "id": "Muir Apartments (East)",
-         "geo": { "lat": 32.8778, "long": -117.24358 }
-      },
-      {
-         "id": "Muir Apartments (West)",
-         "geo": { "lat": 32.87785, "long": -117.24369 }
-      },
-      {
-         "id": "Peterson Hall (East)",
-         "geo": { "lat": 32.88023, "long": -117.24061 }
-      },
-      {
-         "id": "Peterson Hall (West)",
-         "geo": { "lat": 32.88043, "long": -117.240783 }
-      },
-      {
-         "id": "Pangea Parking Structure (East)",
-         "geo": { "lat": 32.88428, "long": -117.24231 }
-      },
-      {
-         "id": "Pangea Parking Structure (West)",
-         "geo": { "lat": 32.8842, "long": -117.24246 }
-      },
-      {
-         "id": "Eleanor Roosevelt College (East)",
-         "geo": { "lat": 32.886506, "long": -117.242336 }
-      },
-      {
-         "id": "Eleanor Roosevelt College (West)",
-         "geo": { "lat": 32.88651, "long": -117.24248 }
-      },
-      {
-         "id": "Torrey Pines Center South",
+         "id": "0",
          "geo": { "lat": 32.891764, "long": -117.24318 }
       },
       {
-         "id": "North Point (North)",
-         "geo": { "lat": 32.88886, "long": -117.24036 }
-      },
-      {
-         "id": "North Point (South)",
+         "id": "1",
          "geo": { "lat": 32.88874, "long": -117.24034 }
       },
       {
-         "id": "Hopkins Structure (North)",
-         "geo": { "lat": 32.88437, "long": -117.23851 }
-      },
-      {
-         "id": "Hopkins Structure (South)",
+         "id": "2",
          "geo": { "lat": 32.884402, "long": -117.238672 }
       },
       {
-         "id": "Warren Apartments (East)",
-         "geo": { "lat": 32.88208, "long": -117.2332 }
-      },
-      {
-         "id": "Warren Apartments (West)",
+         "id": "3",
          "geo": { "lat": 32.881679, "long": -117.233062 }
       },
       {
-         "id": "Lotp510/ Canyonview (North)",
-         "geo": { "lat": 32.88073, "long": -117.23068 }
-      },
-      {
-         "id": "Lotp510/ Canyonview (South)",
+         "id": "4",
          "geo": { "lat": 32.88083, "long": -117.23004 }
       },
       {
-         "id": "Gilman Transit Center (North)",
+         "id": "5",
          "geo": { "lat": 32.87715, "long": -117.23571 }
       },
       {
-         "id": "Gilman Transit Center (South)",
-         "geo": { "lat": 32.87694, "long": -117.23556 }
-      },
-      {
-         "id": "Gilman/Mandeville Lane (North)",
+         "id": "6",
          "geo": { "lat": 32.87709, "long": -117.23809 }
       },
       {
-         "id": "Gilman/Mandeville Lane (South)",
-         "geo": { "lat": 32.876887, "long": -117.238096 }
-      },
-      {
-         "id": "Gilman/Osler (East)",
-         "geo": { "lat": 32.884402, "long": -117.238672 }
-      },
-      {
-         "id": "Gilman/Osler (West)",
+         "id": "7",
          "geo": { "lat": 32.87425, "long": -117.2384 }
       },
       {
-         "id": "Ché Cafe (North)",
+         "id": "8",
          "geo": { "lat": 32.87311, "long": -117.23944 }
       },
       {
-         "id": "Ché Cafe (South)",
+         "id": "9",
+         "geo": { "lat": 32.87264, "long": -117.24142 }
+      },
+      {
+         "id": "10",
+         "geo": { "lat": 32.87591, "long": -117.24303 }
+      },
+      {
+         "id": "11",
+         "geo": { "lat": 32.8778, "long": -117.24358 }
+      },
+      {
+         "id": "12",
+         "geo": { "lat": 32.88023, "long": -117.24061 }
+      },
+      {
+         "id": "13",
+         "geo": { "lat": 32.88428, "long": -117.24231 }
+      },
+      {
+         "id": "14",
+         "geo": { "lat": 32.886506, "long": -117.242336 }
+      },
+      {
+         "id": "15",
+         "geo": { "lat": 32.88886, "long": -117.24036 }
+      },
+      {
+         "id": "16",
+         "geo": { "lat": 32.88437, "long": -117.23851 }
+      },
+      {
+         "id": "17",
+         "geo": { "lat": 32.88208, "long": -117.2332 }
+      },
+      {
+         "id": "18",
+         "geo": { "lat": 32.88073, "long": -117.23068 }
+      },
+      {
+         "id": "19",
+         "geo": { "lat": 32.87694, "long": -117.23556 }
+      },
+      {
+         "id": "20",
+         "geo": { "lat": 32.876887, "long": -117.238096 }
+      },
+      {
+         "id": "21",
+         "geo": { "lat": 32.874364, "long": -117.238257 }
+      },
+      {
+         "id": "22",
          "geo": { "lat": 32.87304, "long": -117.23925 }
+      },
+      {
+         "id": "23",
+         "geo": { "lat": 32.87252, "long": -117.24139 }
+      },
+      {
+         "id": "24",
+         "geo": { "lat": 32.8753, "long": -117.2433 }
+      },
+      {
+         "id": "25",
+         "geo": { "lat": 32.87785, "long": -117.24369 }
+      },
+      {
+         "id": "26",
+         "geo": { "lat": 32.88043, "long": -117.240783 }
+      },
+      {
+         "id": "27",
+         "geo": { "lat": 32.8842, "long": -117.24246 }
+      },
+      {
+         "id": "28",
+         "geo": { "lat": 32.88651, "long": -117.24248 }
       }
    ]
 }
