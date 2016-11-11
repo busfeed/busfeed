@@ -1,6 +1,8 @@
 function drawChart(day) {
    $.getJSON("../data/"+stopId+"/"+day, function(json) {
       console.log(json);
+      var p_data = json.past;
+      var c_data = json.curr;
       $('#chart').empty();
 
       var width = $(window).width();
@@ -37,8 +39,8 @@ function drawChart(day) {
          xTickLocs.push(margins.left+34*i);
       }
 
-      var xScale = d3.scaleOrdinal(xTickLocs).domain(json.domain.slice(lower,higher));
-      var yScale = d3.scaleLinear().rangeRound([height-margins.bot, margins.top]).domain([0, d3.max(json.range.slice(lower,higher))]);
+      var xScale = d3.scaleOrdinal(xTickLocs).domain(p_data.domain.slice(lower,higher));
+      var yScale = d3.scaleLinear().rangeRound([height-margins.bot, margins.top]).domain([0, d3.max(p_data.range.slice(lower,higher).concat(c_data.range.slice(lower,higher)))]);
       var xAxis = d3.axisBottom(xScale);
       var yAxis = d3.axisLeft(yScale).tickFormat(function(d) { if (Math.floor(d) != d) { return; } return d;});
 
@@ -50,7 +52,8 @@ function drawChart(day) {
       .attr("transform", "translate("+margins.left+",0)")
       .call(yAxis);
 
-      var line = d3.line()
+      //historical line
+      var p_line = d3.line()
       .x(function(d) {
          return xScale(d.x);
       })
@@ -59,24 +62,53 @@ function drawChart(day) {
       })
       .curve(d3.curveMonotoneX);
 
-      var data = [];
+      var p_points = [];
       for (var i=lower; i < higher; i++) {
-         data.push({"x":json.domain[i], "y":json.range[i]});
+         p_points.push({"x":p_data.domain[i], "y":p_data.range[i]});
       }
+
       svg.append('path')
-      .attr('d', line(data))
-      .attr('stroke', 'red')
+      .attr('d', p_line(p_points))
+      .attr('stroke', 'Gray')
       .attr('stroke-width', 2)
-      .attr('fill', 'none');
+      .attr('fill', "none");
 
       svg.selectAll("dot")
-      .data(data)
+      .data(p_points)
       .enter().append("circle")
       .attr("r", 3.5)
       .attr("cx", function(d) { return xScale(d.x); })
       .attr("cy", function(d) { return yScale(d.y); })
-      .style("fill", "DarkRed");
+      .style("fill", "DimGray");
 
+      //current day line
+      var c_line = d3.line()
+      .x(function(d) {
+         return xScale(d.x);
+      })
+      .y(function (d) {
+         return yScale(d.y);
+      })
+      .curve(d3.curveMonotoneX);
+
+      var c_points = [];
+      for (var i=lower; i < higher; i++) {
+         c_points.push({"x":c_data.domain[i], "y":c_data.range[i]});
+      }
+
+      svg.append('path')
+      .attr('d', c_line(c_points))
+      .attr('stroke', 'red')
+      .attr('stroke-width', 2)
+      .attr('fill', "none");
+
+      svg.selectAll("dot")
+      .data(c_points)
+      .enter().append("circle")
+      .attr("r", 3.5)
+      .attr("cx", function(d) { return xScale(d.x); })
+      .attr("cy", function(d) { return yScale(d.y); })
+      .style("fill", "darkred");
 
       //Create X axis label
       svg.append("text")

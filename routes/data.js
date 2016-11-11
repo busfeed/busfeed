@@ -34,6 +34,11 @@ for (var p in pings.pings) {
    allpings[stopId][day][key]++;
 }
 
+var todaypings = {};
+for (var i=0; i < 29; i++) {
+   todaypings[""+i] = JSON.parse(JSON.stringify(intervalObj));
+}
+
 exports.feed = function(req, res) {
    var f = {"feed":[]};
    for (var i in feed.feed) {
@@ -58,18 +63,32 @@ exports.stops = function(req, res) {
 exports.chart = function(req, res) {
    var day = parseInt(req.params.day);
    var stopId = parseInt(req.params.stopId);
-   var obj = {"domain":[], "range":[]};
+
+   var p_obj = {"domain":[], "range":[]};
    var daypings = allpings[stopId][day];
    for (var key in daypings) {
       if (daypings.hasOwnProperty(key)) {
-         obj.domain.push(key);
-         obj.range.push(daypings[key]);
+         p_obj.domain.push(key);
+         p_obj.range.push(daypings[key]);
       }
    }
-   res.json(obj);
+
+   var t_obj = {"domain":[], "range":[]};
+   var today = todaypings[stopId];
+   for (var key in today) {
+      if (today.hasOwnProperty(key)) {
+         t_obj.domain.push(key);
+         t_obj.range.push(today[key]);
+      }
+   }
+   res.json({"past": p_obj, "curr": t_obj});
 };
 
 exports.newPing = function(req, res) {
+   var date = new Date();
+   var hour = date.getHours();
+   var minute = date.getMinutes();
+   todaypings[req.params.stopId][""+(hour * 100 + Math.floor(minutes / 30) * 30)]++;
    console.log(req.params.stopId);
    res.send("pinged");
 };
