@@ -4,7 +4,7 @@
          <h1>BusFeed</h1>
          <div class="col-sm-8 col-md-10 col-md-offset-1">
             <div id="bad-login" class="alert alert-danger" role="alert" style="display: none;">
-               Invalid username or password.
+               Invalid username/password. <span class="badge" style="color: lightpink; background-color: brown;"></span>
             </div>
             <div id="user-group" class="form-group input-group">
                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -16,6 +16,7 @@
             </div>
             <div class="form-group">
                <button type="submit" class="btn btn-primary btn-block" onclick="verifyCredentials();">Log in</button>
+               <a href="/register" class="btn btn-default btn-block" >Register</a>
             </div>
          </div>
       </div>
@@ -23,6 +24,8 @@
 </div>
 
 <script>
+var bad = 0;
+
 function verifyCredentials() {
    $('.input-group').removeClass("has-error");
 
@@ -35,15 +38,17 @@ function verifyCredentials() {
       $('#pw-group').addClass("has-error");
    }
 
-   console.log(user.length, pw.length);
-
    if (user.length > 0 && pw.length > 0) {
-      $.post('/data/'+user+'/'+pw, function(result) {
+      $.post('/verify/'+user+'/'+pw, function(result) {
          if (result == "valid") {
             window.location.replace('/home/'+user);
          }
          else {
             $('#bad-login').show();
+            if (bad > 0) {
+               $('.badge').text(bad+"");
+            }
+            bad++;
          }
       });
    }

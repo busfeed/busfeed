@@ -13,6 +13,7 @@ var data = require('./routes/data');
 
 //routes
 var index = require('./routes/index');
+var register = require('./routes/register');
 var home = require('./routes/home');
 var mytrips = require('./routes/mytrips');
 var newtrip = require('./routes/newtrip');
@@ -44,6 +45,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/register', register.view);
 app.get('/home', home.view);
 app.get('/home/:user', home.viewWithName);
 app.get('/mytrips', mytrips.view);
@@ -62,7 +64,8 @@ app.get('/data/geos', data.getGeos);
 app.post('/ping/:stopId', data.newPing);
 app.post('/data/track/:stopId', data.trackStop);
 app.post('/data/untrack/:stopId', data.untrackStop);
-app.post('/data/:user/:pw', data.verify);
+app.post('/verify/:user/:pw', data.verify);
+app.post('/register/:user/:pw', data.newUser);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

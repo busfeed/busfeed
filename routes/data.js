@@ -108,6 +108,13 @@ exports.getGeos = function(req, res) {
    res.send(geos);
 }
 
+exports.newUser = function(req, res) {
+   var user = req.params.user;
+   var pw = req.params.pw;
+   accounts[user] = pw;
+   res.send("valid");
+}
+
 exports.verify = function(req, res) {
    var user = req.params.user;
    var pw = req.params.pw;
