@@ -20,13 +20,36 @@
             </button>
             <div class="list-group collapse" id="counter"></div>
          </div>
+         <div style="height: 50px;"></div>
       </div>
    </div>
 </div>
 
+<button id="info-toggle" class="btn btn-default" style="position: fixed; z-index: 10;"
+   aria-hidden="true" data-toggle="popover" title="Abbreviations" data-placement="top" data-html="true"
+   data-content="<div><b>CW</b> : Clockwise</div><div><b>CCW</b> : Counter-clockwise</div><div><b>EB</b> : Eastbound</div>
+               <div><b>WB</b> : Westbound</div><div><b>NB</b> : Northbound</div><div><b>SB</b> : Southbound</div><hr>
+               <div><b>PC</b> : Price Center side</div><div><b>CH</b> : Center Hall side</div>">
+   Help
+</button>
+
 <script>
 var stopItems;
 var stopToggles = $('.list-group.collapse');
+
+$(function () {
+   $('[data-toggle="popover"]').popover()
+})
+
+var width = $(window).width();
+var height = $(window).height();
+var bw = $('#info-toggle').width();
+$('#info-toggle').css('left', (width/2 - bw) + 'px')
+   .css('bottom', '20px');
+
+$(document).on('scroll', function() {
+   $('#info-toggle').popover('hide');
+});
 
 $(document).ready(function() {
    $.getJSON("../data/stops", function(json) {
