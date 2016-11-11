@@ -11,14 +11,19 @@
             Report: Crowded stop
          </button>
          {{#if tracked}}
-         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;" onclick="untrackStop(); this.disabled=true;">
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="untrackStop(); this.disabled=true;">
             Remove from feed
          </button>
          {{else}}
-         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 10px;" onclick="trackStop(); this.disabled=true;">
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="trackStop(); this.disabled=true;">
             Add to feed
          </button>
          {{/if}}
+         <button style="font-size: 1.2em; float: right; appearance: none; -webkit-appearance: none; -moz-appearance: none; outline: none; border: 0; background: transparent;"
+            aria-hidden="true" data-toggle="popover" data-trigger="focus" title="Chart Information" data-placement="left" data-html="true"
+            data-content="<div><b style='color: gray;'>Gray</b> : Historical reports</div><div><b style='color: red;'>Red</b> : Current day reports</div>">
+            <span class="glyphicon glyphicon-question-sign"></span>
+         </button>
          <div id="chart"></div>
          <div class="text-center" style="margin-bottom: 10px;">
             <div class="btn-group" data-toggle="buttons">
@@ -57,6 +62,10 @@
 $(document).ready(function() {
    drawChart(new Date().getDay());
 });
+
+$(function () {
+   $('[data-toggle="popover"]').popover()
+})
 
 console.log({{tracked}});
 
