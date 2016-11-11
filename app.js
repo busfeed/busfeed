@@ -45,6 +45,7 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/home', home.view);
+app.get('/home/:user', home.viewWithName);
 app.get('/mytrips', mytrips.view);
 app.get('/newtrip', newtrip.view);
 app.get('/pickroute', pickroute.view);
@@ -57,12 +58,11 @@ app.get('/detail/:stopId', detail.view);
 app.get('/data/feed', data.feed);
 app.get('/data/stops', data.stops);
 app.get('/data/:stopId/:day', data.chart);
-app.get('/data/geos', data.getGeos)
-
-app.post('/home', home.viewWithName);
+app.get('/data/geos', data.getGeos);
 app.post('/ping/:stopId', data.newPing);
 app.post('/data/track/:stopId', data.trackStop);
 app.post('/data/untrack/:stopId', data.untrackStop);
+app.post('/data/:user/:pw', data.verify);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

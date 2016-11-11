@@ -8,6 +8,6 @@ exports.view = function(req, res) {
 };
 
 exports.viewWithName = function(req, res) {
-   name = req.body.username;
-   res.render('home', {"username":name, "mapsKey": process.env.GOOGLE_API_KEY});
+   name = req.params.user;
+   res.render('home', {"username": name, "mapsKey": process.env.GOOGLE_API_KEY});
 };

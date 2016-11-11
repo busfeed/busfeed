@@ -3,6 +3,7 @@ var stops = require('../data/stops');
 var feed = require('../data/feed');
 var pings = require('../data/pings');
 var geos = require('../data/geo');
+var accounts = require('../data/accounts');
 
 exports.feedList = feed;
 
@@ -105,4 +106,24 @@ exports.untrackStop = function(req, res) {
 
 exports.getGeos = function(req, res) {
    res.send(geos);
+}
+
+exports.verify = function(req, res) {
+   var user = req.params.user;
+   var pw = req.params.pw;
+   console.log(user, pw);
+   if (accounts[user]) {
+      if (accounts[user] == pw) {
+         console.log("match");
+         res.send("valid");
+      }
+      else {
+         console.log("wrong pw");
+         res.send("invalid");
+      }
+   }
+   else {
+      console.log("wrong user");
+      res.send("invalid");
+   }
 }
