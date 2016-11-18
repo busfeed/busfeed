@@ -1,0 +1,91 @@
+<div class="container">
+   <div class="row">
+      <div class="col-sm-8 col-md-10 col-md-offset-1">
+         <div class="input-group">
+            <span class="input-group-addon" style="border-radius: 45px 0px 0px 45px;">
+               <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <input id="search-input" list="list" type="text" class="form-control" placeholder="Search..." style="border-radius: 0px 45px 45px 0px;" onkeyup="searchFilter()">
+         </div>
+         <h3>Browse by Route</h3>
+         <div class="list-group" style="margin-top: 20px;">
+            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#clockwise" aria-expanded="false">
+               <b>Clockwise Campus Loop</b>
+               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="float: right;"></span>
+            </button>
+            <div class="list-group collapse" id="clockwise"></div>
+            <button type="button" class="list-group-item btn-block text-left" data-toggle="collapse" data-target="#counter" aria-expanded="false">
+               <b>Counter-Clockwise Campus Loop</b>
+               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="float: right;"></span>
+            </button>
+            <div class="list-group collapse" id="counter"></div>
+         </div>
+         <div style="height: 50px;"></div>
+      </div>
+   </div>
+</div>
+
+<datalist id="list">
+   {{#each stops}}
+   <option value="{{this}}"></option>
+   {{/each}}
+</datalist>
+
+<button id="info-toggle" class="btn btn-default" style="position: fixed; z-index: 10;"
+   aria-hidden="true" data-toggle="popover" title="Abbreviations" data-placement="top" data-html="true"
+   data-content="<div><b>CW</b> : Clockwise</div><div><b>CCW</b> : Counter-clockwise</div><div><b>EB</b> : Eastbound</div>
+               <div><b>WB</b> : Westbound</div><div><b>NB</b> : Northbound</div><div><b>SB</b> : Southbound</div><hr>
+               <div><b>PC</b> : Price Center side</div><div><b>CH</b> : Center Hall side</div><div><b>SoM</b> : School of Medicine side</div>">
+   Help
+</button>
+
+<script>
+var stopItems;
+var stopToggles = $('.list-group.collapse');
+
+$(function () {
+   $('[data-toggle="popover"]').popover()
+})
+
+var width = $(window).width();
+var height = $(window).height();
+var bw = $('#info-toggle').width();
+$('#info-toggle').css('left', (width/2 - bw) + 'px')
+   .css('bottom', '20px');
+
+$(document).on('scroll', function() {
+   $('#info-toggle').popover('hide');
+});
+
+$(document).ready(function() {
+   $.getJSON("../data/stops", function(json) {
+      console.log(json);
+      for (var key in json) {
+         if (json.hasOwnProperty(key)) {
+            for (var i in json[key]) {
+               var id = json[key][i].id;
+               var name = json[key][i].name;
+               $('#'+key).append("<a href='/detail/" + id + "' class='list-group-item stop-item'>" + name + "</a>");
+            }
+         }
+      }
+      stopItems = $('.stop-item');
+   });
+});
+
+function searchFilter() {
+   var val = $.trim($('#search-input').val()).toUpperCase();
+
+   if (val === "") {
+      stopItems.show();
+   }
+   else {
+      stopToggles.collapse("show");
+      stopItems.hide();
+      stopItems.filter(function() {
+         return -1 != $(this).text().toUpperCase().indexOf(val);
+      }).show();
+   }
+}
+
+</script>

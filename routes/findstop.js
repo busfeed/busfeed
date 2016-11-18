@@ -1,8 +1,5 @@
-
-/*
- * GET home page.
- */
+var allstops = require('../data/allstops');
 
 exports.view = function(req, res){
-  res.render('findstop');
+  res.render('findstop', allstops);
 };
