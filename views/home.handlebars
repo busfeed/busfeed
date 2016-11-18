@@ -14,14 +14,37 @@
 </div>
 
 <script>
+function badgeColor(pings) {
+   var color = "999999";
+   if (pings > 0) {
+      var c1 = "FFCC12";
+      var c2 = "AD0000";
+      var ratio = Math.min(pings, 10) / 10;
+      var R = Math.round(parseInt(c1.substr(0, 2), 16) + (parseInt(c2.substr(0, 2), 16) - parseInt(c1.substr(0, 2), 16)) * ratio);
+      var G = Math.round(parseInt(c1.substr(2, 2), 16) + (parseInt(c2.substr(2, 2), 16) - parseInt(c1.substr(2, 2), 16)) * ratio);
+      var B = Math.round(parseInt(c1.substr(4, 2), 16) + (parseInt(c2.substr(4, 2), 16) - parseInt(c1.substr(4, 2), 16)) * ratio);
+      function pad(str) {
+         return (str.length > 1) ? str : "0"+str;
+      }
+      R = pad(R.toString(16));
+      G = pad(G.toString(16));
+      B = pad(B.toString(16));
+      color = R+G+B;
+      console.log(color, R, G, B);
+   }
+   return color;
+}
+
 $(document).ready(
    $.getJSON("../data/feed", function(json) {
       console.log(json);
       if (json.feed.length > 0) {
          for (var stop in json.feed) {
-            id = json.feed[stop].id;
-            name = json.feed[stop].name;
-            $('#feed').append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "<span class='badge'>0</span></a>");
+            var id = json.feed[stop].id;
+            var name = json.feed[stop].name;
+            var pings = json.feed[stop].pings;
+            var color = badgeColor(pings);
+            $('#feed').append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "<span class='badge' style='background-color: #" + color + ";'>" + pings + "</span></a>");
          }
          $('#feed').append("<a href='/findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
       }

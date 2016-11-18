@@ -19,11 +19,9 @@
             Add to feed
          </button>
          {{/if}}
-         <button style="font-size: 1.2em; float: right; appearance: none; -webkit-appearance: none; -moz-appearance: none; outline: none; border: 0; background: transparent;"
-            aria-hidden="true" data-toggle="popover" data-trigger="focus" title="Chart Information" data-placement="left" data-html="true"
-            data-content="<div><span class='glyphicon glyphicon-stop' style='color: gray;'></span> : Historical reports</div><div><span class='glyphicon glyphicon-stop' style='color: red;'></span> : Current day reports</div>">
-            <span class="glyphicon glyphicon-question-sign"></span>
-         </button>
+         <div class="text-center">
+            <i class='glyphicon glyphicon-stop' style='color: gray;'></i> : Historical reports <i class='glyphicon glyphicon-stop' style='color: red;'></i> : Current day reports
+         </div>
          <div id="chart"></div>
          <div class="text-center" style="margin-bottom: 10px;">
             <div class="btn-group" data-toggle="buttons">
@@ -80,6 +78,7 @@ $("#day"+(new Date().getDay())).prop('checked', true).parent().addClass("active"
 function pingStop() {
    $.post('/ping/'+stopId, function(result) {
       alert("Report sent!");
+      drawChart(new Date().getDay());
    });
 }
 

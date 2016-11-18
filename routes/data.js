@@ -41,9 +41,14 @@ for (var i=0; i < 29; i++) {
 }
 
 exports.feed = function(req, res) {
+   var date = new Date();
+   var hour = date.getHours();
+   var minutes = date.getMinutes();
+   var key = "" + (hour * 100 + Math.floor(minutes / 30) * 30);
    var f = {"feed":[]};
    for (var i in feed.feed) {
-      f.feed.push({"id":feed.feed[i], "name":allstops.stops[parseInt(feed.feed[i])]});
+      console.log(key);
+      f.feed.push({"id":feed.feed[i], "name":allstops.stops[parseInt(feed.feed[i])], "pings":todaypings[feed.feed[i]][key]});
    }
    res.json(f);
 };
@@ -88,9 +93,10 @@ exports.chart = function(req, res) {
 exports.newPing = function(req, res) {
    var date = new Date();
    var hour = date.getHours();
-   var minute = date.getMinutes();
-   todaypings[req.params.stopId][""+(hour * 100 + Math.floor(minutes / 30) * 30)]++;
-   console.log(req.params.stopId);
+   var minutes = date.getMinutes();
+   var key = ""+(hour * 100 + Math.floor(minutes / 30) * 30);
+   todaypings[req.params.stopId][key]++;
+   console.log(req.params.stopId, key);
    res.send("pinged");
 };
 

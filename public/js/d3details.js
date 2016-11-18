@@ -126,7 +126,7 @@ function drawChart(day) {
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
-      .text("Crowding Intensity");
+      .text("Crowding Reports");
    });
 
 }
