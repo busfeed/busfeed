@@ -23,7 +23,7 @@ $(document).ready(
             name = json.feed[stop].name;
             $('#feed').append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "<span class='badge'>0</span></a>");
          }
-         $('#feed').append("<a href='findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
+         $('#feed').append("<a href='/findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
       }
       else {
          $('#feed').append("<a href='/findstop' class='list-group-item'><h4 class='list-group-item-heading'>No stops tracked!</h4><p class='list-group-item-text'>Press to add stops.</p></a>");
