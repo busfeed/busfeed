@@ -6,7 +6,7 @@ var geos = require('../data/geo');
 dotenv.load();
 
 exports.view = function(req, res) {
-   var stopId = parseInt(req.query.id);
+   var stopId = parseInt((req.query.id) ? req.query.id : 0);
    console.log(geos.locations[stopId].id);
    res.render('detail', {
       "stopId": stopId,
@@ -20,7 +20,7 @@ exports.view = function(req, res) {
 };
 
 exports.view2 = function(req, res) {
-   var stopId = parseInt(req.query.id);
+   var stopId = parseInt((req.query.id) ? req.query.id : 0);
    console.log(geos.locations[stopId].id);
    res.render('detail', {
       "stopId": stopId,
