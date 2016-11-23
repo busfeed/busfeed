@@ -6,13 +6,13 @@ var geos = require('../data/geo');
 dotenv.load();
 
 exports.view = function(req, res) {
-   var stopId = parseInt(req.params.stopId);
+   var stopId = parseInt(req.query.id);
    console.log(geos.locations[stopId].id);
    res.render('detail', {
-      "stopId": req.params['stopId'],
+      "stopId": stopId,
       "stopName": allstops.stops[stopId],
       "goBack": req.header('Referer'),
-      "tracked": data.feedList.feed.indexOf(req.params.stopId) > -1,
+      "tracked": data.feedList.feed.indexOf(stopId) > -1,
       "loc": geos.locations[stopId].geo,
       "mapsKey": process.env.GOOGLE_API_KEY,
       "top": true
@@ -20,13 +20,13 @@ exports.view = function(req, res) {
 };
 
 exports.view2 = function(req, res) {
-   var stopId = parseInt(req.params.stopId);
+   var stopId = parseInt(req.query.id);
    console.log(geos.locations[stopId].id);
    res.render('detail', {
-      "stopId": req.params['stopId'],
+      "stopId": stopId,
       "stopName": allstops.stops[stopId],
       "goBack": req.header('Referer'),
-      "tracked": data.feedList.feed.indexOf(req.params.stopId) > -1,
+      "tracked": data.feedList.feed.indexOf(stopId) > -1,
       "loc": geos.locations[stopId].geo,
       "mapsKey": process.env.GOOGLE_API_KEY,
       "top": false

@@ -59,7 +59,7 @@ $(document).ready(function() {
             for (var i in json[key]) {
                var id = json[key][i].id;
                var name = json[key][i].name;
-               $('#'+key).append("<a href='/detail/" + id + "' class='list-group-item stop-item'>" + name + "</a>");
+               $('#'+key).append("<a href='/detail?id=" + id + "' class='list-group-item stop-item'>" + name + "</a>");
             }
          }
       }

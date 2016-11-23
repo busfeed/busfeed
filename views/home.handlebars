@@ -44,7 +44,7 @@ $(document).ready(
             var name = json.feed[stop].name;
             var pings = json.feed[stop].pings;
             var color = badgeColor(pings);
-            $('#feed').append("<a href='/detail/" + id + "' class='list-group-item'>" + name + "<span class='badge' style='background-color: #" + color + ";'>" + pings + "</span></a>");
+            $('#feed').append("<a href='/detail?id=" + id + "' class='list-group-item'>" + name + "<span class='badge' style='background-color: #" + color + ";'>" + pings + "</span></a>");
          }
          $('#feed').append("<a href='/findstop' class='list-group-item'>Add Stop<i class='glyphicon glyphicon-plus' style='float: right;'></i></a>");
       }
