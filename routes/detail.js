@@ -17,3 +17,16 @@ exports.view = function(req, res) {
       "mapsKey": process.env.GOOGLE_API_KEY
    });
 };
+
+exports.view2 = function(req, res) {
+   var stopId = parseInt(req.params.stopId);
+   console.log(geos.locations[stopId].id);
+   res.render('detail2', {
+      "stopId": req.params['stopId'],
+      "stopName": allstops.stops[stopId],
+      "goBack": req.header('Referer'),
+      "tracked": data.feedList.feed.indexOf(req.params.stopId) > -1,
+      "loc": geos.locations[stopId].geo,
+      "mapsKey": process.env.GOOGLE_API_KEY
+   });
+};

@@ -10,15 +10,6 @@
          <button role="button" class="btn btn-danger btn-block" style="margin-top: 10px;" onclick="pingStop(); this.disabled=true;">
             Report: Crowded stop
          </button>
-         {{#if tracked}}
-         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="untrackStop(); this.disabled=true;">
-            Remove from feed
-         </button>
-         {{else}}
-         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="trackStop(); this.disabled=true;">
-            Add to feed
-         </button>
-         {{/if}}
          <div class="text-center">
             <i class='glyphicon glyphicon-stop' style='color: gray;'></i> : Historical reports <i class='glyphicon glyphicon-stop' style='color: red;'></i> : Current day reports
          </div>
@@ -49,6 +40,15 @@
             </div>
          </div>
          <div id="map" style="height: 225px; margin-bottom: 10px;"></div>
+         {{#if tracked}}
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="untrackStop(); this.disabled=true;">
+            Remove from feed
+         </button>
+         {{else}}
+         <button role="button" class="btn btn-default btn-block" style="margin-top: 5px; margin-bottom: 5px;" onclick="trackStop(); this.disabled=true;">
+            Add to feed
+         </button>
+         {{/if}}
       </div>
    </div>
 </div>
@@ -86,7 +86,7 @@ function trackStop() {
    ga('send', 'event', {
      'eventCategory': 'Track',
      'eventAction': 'click',
-     'eventLabel': 'A'
+     'eventLabel': 'B'
    });
    $.post('/data/track/'+stopId, function(result) {
       alert("Added to feed!");
@@ -97,7 +97,7 @@ function untrackStop() {
    ga('send', 'event', {
      'eventCategory': 'Untrack',
      'eventAction': 'click',
-     'eventLabel': 'A'
+     'eventLabel': 'B'
    });
    $.post('/data/untrack/'+stopId, function(result) {
       alert("Removed from feed!");
