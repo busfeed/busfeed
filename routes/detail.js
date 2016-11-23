@@ -30,7 +30,6 @@ exports.view2 = function(req, res) {
       "tracked": data.feedList.feed.indexOf(stopId) > -1,
       "loc": geos.locations[stopId].geo,
       "mapsKey": process.env.GOOGLE_API_KEY,
-      "top": false,
-      "layout": "layout-testing"
+      "top": false
    });
 };
