@@ -14,19 +14,21 @@ exports.view = function(req, res) {
       "goBack": req.header('Referer'),
       "tracked": data.feedList.feed.indexOf(req.params.stopId) > -1,
       "loc": geos.locations[stopId].geo,
-      "mapsKey": process.env.GOOGLE_API_KEY
+      "mapsKey": process.env.GOOGLE_API_KEY,
+      "top": true
    });
 };
 
 exports.view2 = function(req, res) {
    var stopId = parseInt(req.params.stopId);
    console.log(geos.locations[stopId].id);
-   res.render('detail2', {
+   res.render('detail', {
       "stopId": req.params['stopId'],
       "stopName": allstops.stops[stopId],
       "goBack": req.header('Referer'),
       "tracked": data.feedList.feed.indexOf(req.params.stopId) > -1,
       "loc": geos.locations[stopId].geo,
-      "mapsKey": process.env.GOOGLE_API_KEY
+      "mapsKey": process.env.GOOGLE_API_KEY,
+      "top": false
    });
 };

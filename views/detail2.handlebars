@@ -84,9 +84,8 @@ function pingStop() {
 
 function trackStop() {
    ga('send', 'event', {
-     'eventCategory': 'Track',
-     'eventAction': 'click',
-     'eventLabel': 'B'
+     'eventCategory': 'Tracker',
+     'eventAction': 'click'
    });
    $.post('/data/track/'+stopId, function(result) {
       alert("Added to feed!");
@@ -95,9 +94,8 @@ function trackStop() {
 
 function untrackStop() {
    ga('send', 'event', {
-     'eventCategory': 'Untrack',
-     'eventAction': 'click',
-     'eventLabel': 'B'
+     'eventCategory': 'Tracker',
+     'eventAction': 'click'
    });
    $.post('/data/untrack/'+stopId, function(result) {
       alert("Removed from feed!");
