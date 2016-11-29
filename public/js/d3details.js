@@ -1,3 +1,8 @@
+var path_total_color = "gray";
+var dot_total_color = "dimgray";
+var path_recent_color = "red";
+var dot_recent_color = "darkred";
+
 function drawChart(day) {
    $.getJSON("../data/"+stopId+"/"+day, function(json) {
       console.log(json);
@@ -46,10 +51,12 @@ function drawChart(day) {
 
       svg.append("g")
       .attr("transform", "translate(0," + (height-margins.bot) + ")")
+      .attr("class", "axisColor")
       .call(xAxis);
 
       svg.append("g")
       .attr("transform", "translate("+margins.left+",0)")
+      .attr("class", "axisColor")
       .call(yAxis);
 
       //historical line
@@ -69,7 +76,7 @@ function drawChart(day) {
 
       svg.append('path')
       .attr('d', p_line(p_points))
-      .attr('stroke', 'Gray')
+      .attr('stroke', path_total_color)
       .attr('stroke-width', 2)
       .attr('fill', "none");
 
@@ -79,7 +86,7 @@ function drawChart(day) {
       .attr("r", 3.5)
       .attr("cx", function(d) { return xScale(d.x); })
       .attr("cy", function(d) { return yScale(d.y); })
-      .style("fill", "DimGray");
+      .style("fill", dot_total_color);
 
       //current day line
       var c_line = d3.line()
@@ -98,7 +105,7 @@ function drawChart(day) {
 
       svg.append('path')
       .attr('d', c_line(c_points))
-      .attr('stroke', 'red')
+      .attr('stroke', path_recent_color)
       .attr('stroke-width', 2)
       .attr('fill', "none");
 
@@ -108,12 +115,13 @@ function drawChart(day) {
       .attr("r", 3.5)
       .attr("cx", function(d) { return xScale(d.x); })
       .attr("cy", function(d) { return yScale(d.y); })
-      .style("fill", "darkred");
+      .style("fill", dot_recent_color);
 
       //Create X axis label
       svg.append("text")
       .attr("x", (width-margins.left) / 2 )
       .attr("y", height-3)
+      .attr("fill", "white")
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
       .text("Time of Day");
@@ -124,6 +132,7 @@ function drawChart(day) {
       .attr("y", 0)
       .attr("x", 0 - margins.top - ((height-margins.top-margins.bot) / 2))
       .attr("dy", "1em")
+      .attr("fill", "white")
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
       .text("Crowding Reports");
