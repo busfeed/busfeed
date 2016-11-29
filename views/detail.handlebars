@@ -71,6 +71,36 @@
    </div>
 </div>
 
+<div class="modal modal-sm" id="modal1" tabindex="-1" role="dialog" style="color: black;">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p>Alert sent!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-sm" id="modal2" tabindex="-1" role="dialog" style="color: black;">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p>Added to feed!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-sm" id="modal3" tabindex="-1" role="dialog" style="color: black;">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p>Removed from feed!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
@@ -95,20 +125,20 @@ $("#day"+(new Date().getDay())).prop('checked', true).parent().addClass("active"
 
 function pingStop() {
    $.post('/ping/'+stopId, function(result) {
-      alert("Report sent!");
+      $('#modal1').modal('toggle');
       drawChart(new Date().getDay());
    });
 }
 
 function trackStop() {
    $.post('/data/track/'+stopId, function(result) {
-      alert("Added to feed!");
+      $('#modal2').modal('toggle');
    });
 }
 
 function untrackStop() {
    $.post('/data/untrack/'+stopId, function(result) {
-      alert("Removed from feed!");
+      $('#modal3').modal('toggle');
    });
 }
 </script>
