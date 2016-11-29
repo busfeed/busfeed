@@ -76,11 +76,7 @@ function drawChart(day) {
 
       svg.append('path')
       .attr('d', p_line(p_points))
-<<<<<<< HEAD
-      .attr('stroke', 'Gray')
-=======
       .attr('stroke', path_total_color)
->>>>>>> 1286394eb329a3b3439e36ba8f8c0003c49115b8
       .attr('stroke-width', 2)
       .attr('fill', "none");
 
