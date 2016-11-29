@@ -59,9 +59,9 @@ function initMap() {
 
          map.fitBounds(bounds);
       }, function() {
-         alert("Geolocation service failed");
+         console.log("Geolocation service failed");
       });
    } else {
-      alert("Geolocation not enabled");
+      console.log("Geolocation not enabled");
    }
 }
