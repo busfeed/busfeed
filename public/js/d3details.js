@@ -1,7 +1,7 @@
-var path_total_color = "gray";
-var dot_total_color = "dimgray";
-var path_recent_color = "red";
-var dot_recent_color = "darkred";
+var path_total_color = "lightsteelblue";
+var dot_total_color = "lightblue";
+var path_recent_color = "lightcoral";
+var dot_recent_color = "indianred";
 
 function drawChart(day) {
    $.getJSON("../data/"+stopId+"/"+day, function(json) {
