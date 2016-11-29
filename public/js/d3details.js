@@ -69,7 +69,7 @@ function drawChart(day) {
 
       svg.append('path')
       .attr('d', p_line(p_points))
-      .attr('stroke', 'Gray')
+      .attr('stroke', 'Gainsboro')
       .attr('stroke-width', 2)
       .attr('fill', "none");
 
